@@ -1,3 +1,7 @@
+## Instagratification - SOEN 341
+
+This project is about creating an Instagram like website. There will be three core features as follows: Post a picture, Follow a user and Leave comments to a posted picture. Additionally, one extra core feature will be implemented which will be decided by our team and approved by our client which is our teaching assistant.
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
