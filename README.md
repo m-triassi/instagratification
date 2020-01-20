@@ -13,6 +13,7 @@ This project is about creating an Instagram like website. There will be three co
 - Wei Chen Huang (Wilson) | willyyhuang
 - Massimo Triassi | m-triassi
 - Ramsha Khalid | Ramshaaa
+- Marieme Kourouss | mariemek
 
 ## Learning Laravel
 
