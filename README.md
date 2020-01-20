@@ -8,6 +8,7 @@
 ## Team Members
 - Wei Chen Huang (Wilson) | willyyhuang
 - Massimo Triassi | m-triassi
+- Ramsha Khalid | Ramshaaa
 
 ## Learning Laravel
 
