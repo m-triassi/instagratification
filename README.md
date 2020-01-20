@@ -14,6 +14,7 @@ This project is about creating an Instagram like website. There will be three co
 - Massimo Triassi | m-triassi
 - Ramsha Khalid | Ramshaaa
 - Marieme Kourouss | mariemek
+- Robert Nittolo | RobertoNittolo
 
 ## Learning Laravel
 
