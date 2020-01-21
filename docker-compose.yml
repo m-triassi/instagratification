@@ -11,7 +11,7 @@ services:
     build:
       context: ./
       dockerfile: vm/php/dev.dockerfile
-    container_name: lake_app
+    container_name: insta_app
     restart: unless-stopped
     tty: true
     environment:
@@ -30,7 +30,7 @@ services:
     build:
       context: ./
       dockerfile: vm/web/nginx.dockerfile
-    container_name: lake_web
+    container_name: insta_web
     restart: unless-stopped
     tty: true
     environment:
@@ -46,7 +46,7 @@ services:
 
   database:
     image: mysql:5.7
-    container_name: lake_db
+    container_name: insta_db
     restart: unless-stopped
     tty: true
     environment:
