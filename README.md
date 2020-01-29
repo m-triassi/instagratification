@@ -15,6 +15,7 @@ This project is about creating an Instagram like website. There will be three co
 - Ramsha Khalid | Ramshaaa
 - Marieme Kourouss | mariemek
 - Robert Nittolo | RobertoNittolo
+- Aymen Metallaoui | AymenMetallaoui
 
 ## Learning Laravel
 
