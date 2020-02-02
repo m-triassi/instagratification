@@ -22,6 +22,7 @@
         "react"
     ],
     "rules": {
+        "object-curly-spacing": "off",
         "semi": ["error", "never"],
         "no-extra-semi": "error",
         "semi-spacing": ["error", {"before": false, "after": true}],
@@ -29,6 +30,7 @@
         "no-trailing-spaces": ["error", {"skipBlankLines": false}],
         "jsx-quotes": ["error", "prefer-single"],
         "quotes": ["error", "single", {"allowTemplateLiterals": true}],
-        "react/jsx-filename-extension": "off"
+        "react/jsx-filename-extension": "off",
+        "import/prefer-default-export": "off"
     }
 }
