@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,8 +14,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-        factory(\App\Models\User::class, 50)->create()->each(function ($user) {
-            $user->posts()->saveMany(factory(\App\Models\Post::class, 10)->make());
+        factory(User::class, 50)->create()->each(function ($user) {
+            $user->posts()->saveMany(factory(Post::class, 10)->make());
         });
+
+        $users = User::all();
+
+        foreach ($users as $user) {
+            $user->followers()->saveMany($users->random(rand(5, 40)));
+        }
     }
 }
