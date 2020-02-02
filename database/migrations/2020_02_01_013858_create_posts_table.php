@@ -17,8 +17,8 @@ class CreatePostsTable extends Migration
             $table->uuid('id')->primary();
             $table->char('author_id', 36);
             $table->string('media');
-            $table->string('caption');
-            $table->integer('likes');
+            $table->string('caption')->nullable();
+            $table->integer('likes')->default(0);
             $table->timestamps();
 
             $table->foreign("author_id")
