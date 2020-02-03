@@ -13,15 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $maxUsers = env("SEED_MAX_USERS", 50);
+        $postsPerUser = env("SEED_POSTS_PER_USER", 10);
+
         // $this->call(UsersTableSeeder::class);
-        factory(User::class, 50)->create()->each(function ($user) {
-            $user->posts()->saveMany(factory(Post::class, 10)->make());
+        factory(User::class, $maxUsers)->create()->each(function ($user) use ($postsPerUser) {
+            $user->posts()->saveMany(factory(Post::class, $postsPerUser)->make());
         });
 
         $users = User::all();
 
         foreach ($users as $user) {
-            $user->followers()->saveMany($users->random(rand(5, 40)));
+            $user->followers()->saveMany($users->random(rand(1, $maxUsers)));
         }
     }
 }
