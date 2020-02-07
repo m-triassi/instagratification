@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+
 
 class CommentsController extends Controller
 {
