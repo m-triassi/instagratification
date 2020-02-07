@@ -78,7 +78,7 @@
                     @endauth
                 </div>
             @endif
-            <div id="example" />
+            <div id="photo" />
         </div>
     </body>
     <script type="text/javascript" src="js/app.js"></script>

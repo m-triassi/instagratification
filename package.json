@@ -37,6 +37,7 @@
         "eslint-plugin-react": "^7.18.0",
         "husky": "^4.0.10",
         "laravel-mix": "^5.0.1",
+        "laravel-mix-alias": "^1.0.2",
         "less-loader": "^5.0.0",
         "react": "^16.2.0",
         "react-dom": "^16.2.0"
