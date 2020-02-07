@@ -21,4 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::post('/like/{postID}', 'PostsController@like')->name('post.like');
+Route::post('/post/like', 'PostsController@like')->name('post.like');
