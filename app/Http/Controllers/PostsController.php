@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function like($postID)
+    public function like(Request $request)
     {
-        $post = Post::find($postID);
+        $postID = $request->postID;
+
+        $post = Post::findOrFail($postID);
         $post->likes++;
         $post->save();
 
