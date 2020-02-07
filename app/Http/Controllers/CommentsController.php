@@ -19,7 +19,9 @@ class CommentsController extends Controller
         $comment->post()->associate($post);
         $comment->author()->associate($author);
 
-        $comment->save();
+        $result = $comment->save();
+
+        return response(['success' => $result]);
 
     }
 }
