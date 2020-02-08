@@ -28,7 +28,7 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 - HTML
 - CSS
 - JavaScript
-- Framework: Laravel
+- Framework: Laravel, React
 
 ## License
 
