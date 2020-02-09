@@ -14,6 +14,8 @@ class Post extends BaseModel
         'media', 'caption', 'likes',
     ];
 
+    protected $with = ['author'];
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -21,7 +23,7 @@ class Post extends BaseModel
 
     public function author()
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class);
     }
 
 }

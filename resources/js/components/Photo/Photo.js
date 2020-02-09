@@ -30,7 +30,7 @@ const Photo = (props) => {
         </Row>
     )
 
-    // TODO: fixed width and height with correct aspect ratio? 
+    // TODO: fixed width and height with correct aspect ratio?
     return (
         <Card hoverable
             style={{ width: 512 }}
@@ -51,7 +51,11 @@ const Photo = (props) => {
 
 Photo.displayName = 'Photo'
 export default Photo
-
-if (document.getElementById('photo')) {
-    ReactDOM.render(<Photo />, document.getElementById('photo'))
+const elements = Array.from(document.getElementsByClassName('photo'))
+console.log(elements)
+if (elements) {
+    for (let component of elements) {
+        console.log(component)
+        ReactDOM.render(<Photo post={JSON.parse(component.getAttribute("post"))} />, component)
+    }
 }
