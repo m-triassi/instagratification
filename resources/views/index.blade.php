@@ -78,9 +78,11 @@
                     @endauth
                 </div>
             @endif
+            <div id='photo-container'>
             @foreach($posts as $i => $post)
-              <div class="photo" id="post_{{ $i }}" post="{{ $post }}" />
+                <div class="photo" id="post_{{ $i }}" post="{{ $post }}" />
             @endforeach
+            </div>
         </div>
     </body>
     <script type="text/javascript" src="js/app.js"></script>

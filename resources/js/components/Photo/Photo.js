@@ -21,8 +21,8 @@ const Photo = (props) => {
     const description = (
         <Row style={{ fontSize: 12 }}>
             <Row>
-                <Typography.Text strong>{ name } </Typography.Text>
-                <Typography.Text>{ caption }</Typography.Text>
+                <Typography.Text strong>{name} </Typography.Text>
+                <Typography.Text>{caption}</Typography.Text>
             </Row>
             <Row>
                 <Typography.Text style={{ fontSize: 10, color: '#F6CFCA' }} onClick={() => window.location.replace(`/post/${postID}`)}>
@@ -54,10 +54,10 @@ const Photo = (props) => {
 Photo.displayName = 'Photo'
 export default Photo
 const elements = Array.from(document.getElementsByClassName('photo'))
-// console.log(elements)
 if (elements) {
-    for (let component of elements) {
-        // console.log(component)
-        ReactDOM.render(<Photo post={JSON.parse(component.getAttribute("post"))} />, component)
-    }
+    const post = []
+    elements.map((component) => {
+        post.push(<Photo post={JSON.parse(component.getAttribute("post"))} />)
+    })
+    ReactDOM.render(post, document.getElementById('photo-container'))
 }
