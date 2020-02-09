@@ -78,8 +78,8 @@
                     @endauth
                 </div>
             @endif
-            @foreach($posts as $post)
-              <div class="photo" post="{{ $post }}" />
+            @foreach($posts as $i => $post)
+              <div class="photo" id="post_{{ $i }}" post="{{ $post }}" />
             @endforeach
         </div>
     </body>
