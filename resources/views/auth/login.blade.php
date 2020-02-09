@@ -1,20 +1,107 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
+  <style>
+  html{
+    margin:0;
+    padding:0;
+    width: 100%;
+    height:100vh;
+  }
+  body{
+    margin:0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+  background-clip: cover;
+    background-size: cover;
+    display: table;
+
+
+  }
+
+
+  .login{
+    position:absolute;
+    transform: translate(-50%,-50%);
+    width: 340;
+    height: 530px;
+    background: #fff;
+
+    border-radius: 3px;
+    padding: 0.6em;
+    top: 53%;
+    left:50%;
+
+  }
+  .logo{
+
+    position:relative;
+    width: 300px;
+    height: 300px;
+
+
+  }
+  h2{
+    font-family: Source Sans Pro;
+    font-weight: lighter;
+    color: #fff;
+    font-size:50px;
+    text-align: center;
+  }
+  input{
+    display: block ;
+    width: 320px;
+    height: 30px;
+    background-color: transparent;
+    background: rgba(0,0,0,0.05);
+    outline: none;
+
+    border: 0.5px solid rgba(0, 0, 0, 0.4);
+    font-family: Source Sans Pro;
+    font-weight:lighter;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+
+  }
+  label{
+    color:#000;
+    font-size: 15px;
+  }
+
+  .btn {
+    position:relative;
+    width:300px;
+    height: 40px;
+    font-size: 16px;
+    background:		#A1479D;
+    font-weight: lighter;
+    font-size: 20px;
+    color: #fff;
+    border: 0px;
+    border-radius: 5px;
+  }
+  .forgot{
+    position:relative;
+    color: #000;
+
+  }
+
+
+  </style>
+  <div class="login">
+    <center><img src="https://i.imgur.com/nwHjAY5.png" class="logo"/>
+   </center>
+
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" >{{ __('Email') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -22,13 +109,12 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
+
+                            <label for="password" >{{ __('Password') }}</label>
+
+
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -36,38 +122,21 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                <button type="submit" class="btn">
+                                    {{ __('Login') }}<br>
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                    <a  class="forgot" href="{{ route('password.request') }}">
+                                      <br>  {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                            </div>
-                        </div>
+
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                
+
+
 @endsection
