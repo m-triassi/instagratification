@@ -20,6 +20,10 @@
                 margin: 0;
             }
 
+            .container {
+                height: 80vh;
+            }
+
             .full-height {
                 height: 100vh;
             }
@@ -78,7 +82,7 @@
                     @endauth
                 </div>
             @endif
-            <div id='photo-container'>
+            <div id='photo-container' class='container'>
             @foreach($posts as $i => $post)
                 <div class="photo" id="post_{{ $i }}" post="{{ $post }}" />
             @endforeach
