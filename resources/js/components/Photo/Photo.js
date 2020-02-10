@@ -36,7 +36,7 @@ const Photo = (props) => {
     return (
         <Card hoverable
             style={{ width: 512 }}
-            cover={<img style={{ padding: 20, aspectRatio: 3 / 2 }} src={'http://source.unsplash.com/random'} />}>
+            cover={<img style={{ padding: 20, aspectRatio: 3 / 2 }} src={ media } />}>
             <Row gutter={16} style={{ marginTop: -40, paddingBottom: 10 }}>
                 <Col span={1}>
                     <Icon type='heart' theme={(isLiked) ? 'filled' : null} onClick={() => setIsLiked(!isLiked)} />

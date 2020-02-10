@@ -9,7 +9,8 @@ class PagesController extends Controller
 {
     public function index()
     {
-      $posts = Post::limit(3)->orderBy('created_at', "desc")->get();
+      // TODO: make this paginated on all posts relevant to a given user? 
+      $posts = Post::limit(50)->orderBy('created_at', "desc")->get();
       return view('index')->with(compact(['posts']));
     }
 }
