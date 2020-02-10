@@ -4,15 +4,10 @@ import { Card, Icon, Row, Col, Input, Typography } from 'antd'
 
 const { Meta } = Card
 const Photo = (props) => {
-    // Comments for massimo to attempt passing props from php files
-    // parse JSON string from .blade.php
-    // const photoProps = JSON.parse(props)
-    // deconstruct props
-    const { media, id, caption, author } = props.post
-    const authorID = props.post.author.id
-    const { email, name } = props.post.author
+    const { media, id, caption } = props.post
+    const { name } = props.post.author
 
-    // if (!postID) return
+    if (!id) return
     const [isCommentInputVisible, setIsCommentInputVisible] = useState(false)
     const [isLiked, setIsLiked] = useState(false)
 
@@ -25,7 +20,7 @@ const Photo = (props) => {
                 <Typography.Text>{caption}</Typography.Text>
             </Row>
             <Row>
-                <Typography.Text style={{ fontSize: 10, color: '#F6CFCA' }} onClick={() => window.location.replace(`/post/${postID}`)}>
+                <Typography.Text style={{ fontSize: 10, color: '#F6CFCA' }} onClick={() => window.location.replace(`/post/${id}`)}>
                     Click here to expand comments
                 </Typography.Text>
             </Row>
@@ -35,8 +30,8 @@ const Photo = (props) => {
     // TODO: fixed width and height with correct aspect ratio?
     return (
         <Card hoverable
-            style={{ width: 512 }}
-            cover={<img style={{ padding: 20, aspectRatio: 3 / 2 }} src={ media } />}>
+            style={{ width: 512, marginBottom: 15 }}
+            cover={<img style={{ padding: 20, aspectRatio: 3 / 2 }} src={media} />}>
             <Row gutter={16} style={{ marginTop: -40, paddingBottom: 10 }}>
                 <Col span={1}>
                     <Icon type='heart' theme={(isLiked) ? 'filled' : null} onClick={() => setIsLiked(!isLiked)} />
