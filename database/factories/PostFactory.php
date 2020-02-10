@@ -5,7 +5,7 @@
 use App\Models\Post;
 use Faker\Generator as Faker;
 
-$factory->define(Post::class, function (Faker $faker) {
+$factory->define(App\Models\Post::class, function (Faker $faker) {
 
     $url = substr(get_headers("https://source.unsplash.com/random")[10], 10, 140);
     return [

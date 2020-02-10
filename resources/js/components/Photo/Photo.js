@@ -8,7 +8,9 @@ const Photo = (props) => {
     // parse JSON string from .blade.php
     // const photoProps = JSON.parse(props)
     // deconstruct props
-    // const { photoURL, postID, caption } = photoProps
+    const { media, id, caption, author } = props.post
+    const authorID = props.post.author.id
+    const { email, name } = props.post.author
 
     // if (!postID) return
     const [isCommentInputVisible, setIsCommentInputVisible] = useState(false)
@@ -19,8 +21,8 @@ const Photo = (props) => {
     const description = (
         <Row style={{ fontSize: 12 }}>
             <Row>
-                <Typography.Text strong>username</Typography.Text>
-                <Typography.Text> this is a test description</Typography.Text>
+                <Typography.Text strong>{name} </Typography.Text>
+                <Typography.Text>{caption}</Typography.Text>
             </Row>
             <Row>
                 <Typography.Text style={{ fontSize: 10, color: '#F6CFCA' }} onClick={() => window.location.replace(`/post/${postID}`)}>
@@ -30,11 +32,11 @@ const Photo = (props) => {
         </Row>
     )
 
-    // TODO: fixed width and height with correct aspect ratio? 
+    // TODO: fixed width and height with correct aspect ratio?
     return (
         <Card hoverable
             style={{ width: 512 }}
-            cover={<img style={{ padding: 20, aspectRatio: 3 / 2 }} src={'http://source.unsplash.com/random'} />}>
+            cover={<img style={{ padding: 20, aspectRatio: 3 / 2 }} src={ media } />}>
             <Row gutter={16} style={{ marginTop: -40, paddingBottom: 10 }}>
                 <Col span={1}>
                     <Icon type='heart' theme={(isLiked) ? 'filled' : null} onClick={() => setIsLiked(!isLiked)} />
@@ -51,7 +53,11 @@ const Photo = (props) => {
 
 Photo.displayName = 'Photo'
 export default Photo
-
-if (document.getElementById('photo')) {
-    ReactDOM.render(<Photo />, document.getElementById('photo'))
+const elements = Array.from(document.getElementsByClassName('photo'))
+if (elements) {
+    const post = []
+    elements.map((component) => {
+        post.push(<Photo post={JSON.parse(component.getAttribute("post"))} />)
+    })
+    ReactDOM.render(post, document.getElementById('photo-container'))
 }
