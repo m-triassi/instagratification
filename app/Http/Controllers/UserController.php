@@ -18,7 +18,7 @@ class UserController extends Controller
         $loggedInUser = Auth::user();
         $userCanFollow = !($loggedInUser->following()->get()->contains($user->id));
 
-        return view('user.view')->with(compact(['user', 'userCanFollow']));
+        return view('user.view')->with(compact(['user', 'loggedInUser', 'userCanFollow']));
     }
 
     public function follow(Request $request)
