@@ -14,7 +14,8 @@ class PagesController extends Controller
         $followers = $user->following()->get()->pluck('id');
         $posts = Post::whereIn('author_id', $followers)->get();
         if ($posts->isEmpty()) {
-            $posts = Post::limit(50)->orderBy('likes', 'desc')->get();
+            $id = 50
+            $posts = Post::orderBy('likes', 'desc')->limit($id)->get();
         }
         return view('index')->with(compact(['posts']));
     }
