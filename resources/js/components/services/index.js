@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // Internal API post requests
 export async function postPicture(payload) {
-    return axios.post('/post/create', { payload })
+    return axios.post('post/create', payload)
 }
 
 export async function likePhoto(payload) {
