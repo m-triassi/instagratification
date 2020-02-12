@@ -22,4 +22,15 @@ class PostsController extends Controller
 
         return View("posts.view")->with(compact(["post"]));
     }
+
+    public function create(Request $request)
+    {
+        // TODO: add Request validation
+        $post = new Post();
+        $post->caption = $request->caption;
+        $post->media = "/storage/" . $request->file('media')->store('posts');
+        $post->author()->associate($request->author);
+
+        $post->save();
+    }
 }

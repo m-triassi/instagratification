@@ -25,4 +25,4 @@ Route::middleware(["auth"])->group(function () {
     Route::post('/user/follow', 'UserController@follow')->name('user.follow');
     Route::post('/user/unfollow', 'UserController@unfollow')->name('user.unfollow');
 });
-
+Route::post('/post/create', 'PostsController@create')->name('post.create');
