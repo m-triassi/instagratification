@@ -21,8 +21,8 @@ Route::middleware(["auth"])->group(function () {
     Route::get('/user/{id}', 'UserController@show')->name('user.show');
 
     Route::post('/post/like', 'PostsController@like')->name('post.like');
+    Route::post('/post/create', 'PostsController@create')->name('post.create');
     Route::post('/comment/create', 'CommentsController@create')->name('comment.create');
     Route::post('/user/follow', 'UserController@follow')->name('user.follow');
     Route::post('/user/unfollow', 'UserController@unfollow')->name('user.unfollow');
 });
-Route::post('/post/create', 'PostsController@create')->name('post.create');
