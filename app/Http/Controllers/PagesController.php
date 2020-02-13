@@ -12,10 +12,11 @@ class PagesController extends Controller
     {
         $user = Auth::user();
         $followers = $user->following()->get()->pluck('id');
-        $posts = Post::whereIn('author_id', $followers)->get();
+        $posts = Post::with(['comments', 'author'])->whereIn('author_id', $followers)->get();
         if ($posts->isEmpty()) {
-            $posts = Post::limit(50)->orderBy('likes', 'desc')->get();
+            $posts = Post::with(['comments', 'author'])->limit(50)->orderBy('likes', 'desc')->get();
         }
+        
         return view('index')->with(compact(['posts']));
     }
 }

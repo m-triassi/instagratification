@@ -18,7 +18,7 @@ class PostsController extends Controller
         return response(['success'=>true]);
     }
     public function show($postID){
-        $post = Post::findorFail($postID);
+        $post = Post::with('comments', 'author')->findorFail($postID);
 
         return View("posts.view")->with(compact(["post"]));
     }
