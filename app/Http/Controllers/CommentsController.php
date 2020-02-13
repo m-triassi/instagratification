@@ -25,4 +25,15 @@ class CommentsController extends Controller
         return response(['success' => $result]);
 
     }
+    public function destroy(comment $comment)
+    {
+
+      if (auth()->user()->is($comment->user))
+      {
+        $comment->delete();
+      }
+
+      return back();
+
+    }
 }
