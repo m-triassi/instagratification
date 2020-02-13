@@ -39,4 +39,9 @@ class UserController extends Controller
         return redirect()->back();
 
     }
+    public function searchUser($user){
+       $user = User::where('name','like', '%' . $user . '%')->limit(10)->get();
+
+       return View('user.search')->with(compact(['user']));
+    }
 }
