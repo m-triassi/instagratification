@@ -30,7 +30,7 @@ const Photo = (props) => {
         <Typography.Text
           style={{ fontSize: 11, color: '#EABFB9' }}
           onClick={() => {
-            if (comments.legnth > 1) {
+            if (!comments.legnth > 0) {
               window.location.replace(`/post/${id}`)
             } else setIsCommentExpanded(!isCommentExpanded)
           }}>
