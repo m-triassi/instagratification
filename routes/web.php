@@ -19,6 +19,7 @@ Route::middleware(["auth"])->group(function () {
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/post/{postID}', 'PostsController@show')->name('post.show');
     Route::get('/user/{id}', 'UserController@show')->name('user.show');
+    Route::get('/search/{user}', 'UserController@searchUser')->name('user.searchUser');
 
     Route::post('/post/like', 'PostsController@like')->name('post.like');
     Route::post('/post/create', 'PostsController@create')->name('post.create');
