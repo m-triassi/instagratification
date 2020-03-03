@@ -1,6 +1,5 @@
 @extends("layouts.app")
 @section("content")
-{{ $post }}
-{{ $post->author->name }}
+{{ $user }}
 
 @endsection

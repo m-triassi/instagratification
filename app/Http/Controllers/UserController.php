@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)
             ->orWhere("name", $id)
-            ->with('posts', 'posts.comments', 'followers', 'following')
+            ->with('posts', 'posts.comments', 'posts.comments.author', 'followers', 'following')
             ->firstOrFail();
 
         $loggedInUser = Auth::user();
@@ -38,5 +38,10 @@ class UserController extends Controller
 
         return redirect()->back();
 
+    }
+    public function searchUser($user){
+       $user = User::where('name','like', '%' . $user . '%')->limit(10)->get();
+
+       return View('user.search')->with(compact(['user']));
     }
 }
