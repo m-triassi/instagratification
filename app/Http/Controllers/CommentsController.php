@@ -24,11 +24,5 @@ class CommentsController extends Controller
 
         return response(['success' => $result]);
 
-
-    }
-    public function refresh($postID)
-    {
-        $comments = Comment::where("postID", $postID)->get();
-        return $comments;
     }
 }
