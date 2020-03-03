@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)
             ->orWhere("name", $id)
-            ->with('posts', 'posts.comments', 'followers', 'following')
+            ->with('posts', 'posts.comments', 'posts.comments.author', 'followers', 'following')
             ->firstOrFail();
 
         $loggedInUser = Auth::user();
