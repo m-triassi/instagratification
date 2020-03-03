@@ -8,12 +8,12 @@ import { likePhoto, commentPhoto } from '../services/index'
 const { Meta } = Card
 const Photo = (props) => {
   const {
-    media, id, caption, author, comments,
+    media, id, caption, author, comments, likes
   } = props.post
   if (!id) return
   const [isCommentInputVisible, setIsCommentInputVisible] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
-  const [likeCount, setLikedCount] = useState(0)
+  const [likeCount, setLikedCount] = useState(likes)
   const [comment, setComment] = useState('')
   const [isCommentExpanded, setIsCommentExpanded] = useState(false)
   // TODO: handle URL redirecting better instead of just replace URL (React Router?)
@@ -77,7 +77,7 @@ const Photo = (props) => {
           <Icon type='heart' theme={(isLiked) ? 'filled' : null} onClick={handleLike} />
         </Col>
         {likeCount > 0
-            && <Col span={1}>
+            && <Col span={2}>
               <Typography.Text style={{ fontSize: 10 }}>{likeCount}</Typography.Text>
             </Col>}
         <Col span={1}>
