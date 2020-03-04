@@ -13,3 +13,10 @@ require('./bootstrap')
  */
 
 require('./components/index') // all components will be exported from here
+
+
+$(document).keyup(function (e) {
+    if ($("#search-bar").is(":focus") && (e.keyCode == 13)) {
+        window.location.href = "/search/" + $("#search-bar").val();
+    }
+});
