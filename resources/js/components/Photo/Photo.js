@@ -8,7 +8,7 @@ import { likePhoto, commentPhoto } from '../services/index'
 const { Meta } = Card
 const Photo = (props) => {
   const {
-    media, id, caption, author, comments, likes
+    media, id, caption, author, comments, likes,
   } = props.post
   if (!id) return
   const [isCommentInputVisible, setIsCommentInputVisible] = useState(false)
@@ -30,7 +30,7 @@ const Photo = (props) => {
         <Typography.Text
           style={{ fontSize: 11, color: '#EABFB9' }}
           onClick={() => {
-            if (!comments.legnth > 0) {
+            if (!comments.length > 0) {
               window.location.replace(`/post/${id}`)
             } else setIsCommentExpanded(!isCommentExpanded)
           }}>
@@ -39,7 +39,7 @@ const Photo = (props) => {
         {isCommentExpanded && comments.map((value) => (
           <Row style={{ fontSize: 9 }}>
             <Typography.Text strong onClick={() => window.location.replace(`/user/${value.author_id}`)}>
-              {value.author_id}
+              {value.author.name}
               {' '}
             </Typography.Text>
             <Typography.Text>{value.comment}</Typography.Text>
@@ -49,7 +49,7 @@ const Photo = (props) => {
     </Row>
   )
 
-  const handleComment = () => commentPhoto({ comment, author: author.id, postID: id })
+  const handleComment = () => commentPhoto({ comment, author: props.user.id, postID: id })
     .then((response) => {
       if (response.data.success) {
         message.success('your comment has been added')
@@ -104,7 +104,7 @@ const elements = Array.from(document.getElementsByClassName('photo'))
 if (elements) {
   const post = []
   elements.map((component) => {
-    post.push(<Photo post={JSON.parse(component.getAttribute('post'))} />)
+    post.push(<Photo post={JSON.parse(component.getAttribute('post'))} user={JSON.parse(component.getAttribute('user'))} />)
   })
   ReactDOM.render(post, document.getElementById('photo-container'))
 }
