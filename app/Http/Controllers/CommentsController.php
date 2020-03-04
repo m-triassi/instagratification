@@ -28,7 +28,7 @@ class CommentsController extends Controller
     }
     public function refresh($postID)
     {
-        $comments = Comment::where("postID", $postID)->with('author')->get();
+        $comments = Comment::where("post_id", $postID)->with('author')->get();
         return $comments;
     }
 }
