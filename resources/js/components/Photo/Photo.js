@@ -16,32 +16,36 @@ const Photo = (props) => {
   const [likeCount, setLikedCount] = useState(likes)
   const [comment, setComment] = useState('')
   const [isCommentExpanded, setIsCommentExpanded] = useState(false)
-  // TODO: handle URL redirecting better instead of just replace URL (React Router?)
+
   const description = (
     <Row style={{ fontSize: 12 }}>
       <Row>
-        <Typography.Text strong onClick={() => window.location.replace(`/user/${author.name}`)}>
-          {author.name}
-          {' '}
-        </Typography.Text>
+        <a href={`/user/${author.name}`}>
+          <Typography.Text strong>
+            {author.name}
+            {' '}
+          </Typography.Text>
+        </a>
         <Typography.Text>{caption}</Typography.Text>
       </Row>
       <Row>
-        <Typography.Text
-          style={{ fontSize: 11, color: '#EABFB9' }}
-          onClick={() => {
-            if (!comments.length > 0) {
-              window.location.replace(`/post/${id}`)
-            } else setIsCommentExpanded(!isCommentExpanded)
-          }}>
-          {comments.length > 1 ? 'click here expand the comments' : 'click here to view the post'}
-        </Typography.Text>
+        {(comments && comments.length > 1)
+          ? <Typography.Text
+            style={{ fontSize: 11, color: '#EABFB9' }}
+            onClick={() => {
+              setIsCommentExpanded(!isCommentExpanded)
+            }}>
+            click here to expand the comments
+          </Typography.Text>
+          : <a href={`post/${id}`}><Typography.Text style={{ fontSize: 11, color: '#EABFB9' }}>click here to view the post</Typography.Text></a>}
         {isCommentExpanded && comments.map((value) => (
           <Row style={{ fontSize: 9 }}>
-            <Typography.Text strong onClick={() => window.location.replace(`/user/${value.author_id}`)}>
-              {value.author.name}
-              {' '}
-            </Typography.Text>
+            <a href={`/user/${value.author.name}`}>
+              <Typography.Text strong>
+                {value.author.name}
+                {' '}
+              </Typography.Text>
+            </a>
             <Typography.Text>{value.comment}</Typography.Text>
           </Row>
         ))}
@@ -70,30 +74,34 @@ const Photo = (props) => {
   return (
     <Card
       hoverable
-      style={{ backgroundColor: '#F5F5F5', width: 512, marginBottom: 15 }}
+      style={{
+        backgroundColor: '#F5F5F5', width: 512, marginBottom: 15, marginLeft: 'auto', marginRight: 'auto',
+      }}
       cover={<img style={{ padding: 20, aspectRatio: 3 / 2 }} src={media} />}>
-      <Row gutter={16} style={{ marginTop: -40, paddingBottom: 10 }}>
+      <Row
+        gutter={16}
+        style={{ marginTop: -40, paddingBottom: 10 }}>
         <Col span={1}>
           <Icon type='heart' theme={(isLiked) ? 'filled' : null} onClick={handleLike} />
         </Col>
         {likeCount > 0
-            && <Col span={2}>
-              <Typography.Text style={{ fontSize: 10 }}>{likeCount}</Typography.Text>
-            </Col>}
+          && <Col span={2}>
+            <Typography.Text style={{ fontSize: 10 }}>{likeCount}</Typography.Text>
+          </Col>}
         <Col span={1}>
           <Icon type='message' onClick={() => setIsCommentInputVisible(!isCommentInputVisible)} />
         </Col>
       </Row>
       <Meta description={description} />
       {isCommentInputVisible
-                && <Row style={{ marginTop: 10 }}>
-                  <Input
-                    value={comment}
-                    placeholder='insert your comment'
-                    onChange={(value) => setComment(value.target.value)}
-                    onBlur={() => setIsCommentInputVisible(false)}
-                    onPressEnter={handleComment} />
-                </Row>}
+        && <Row style={{ marginTop: 10 }}>
+          <Input
+            value={comment}
+            placeholder='insert your comment'
+            onChange={(value) => setComment(value.target.value)}
+            onBlur={() => setIsCommentInputVisible(false)}
+            onPressEnter={handleComment} />
+          </Row>}
     </Card>
   )
 }
