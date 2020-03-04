@@ -30,11 +30,11 @@ const Photo = (props) => {
         <Typography.Text
           style={{ fontSize: 11, color: '#EABFB9' }}
           onClick={() => {
-            if (!comments.length > 0) {
+            if (comments && !comments.length > 0) {
               window.location.replace(`/post/${id}`)
             } else setIsCommentExpanded(!isCommentExpanded)
           }}>
-          {comments.length > 1 ? 'click here expand the comments' : 'click here to view the post'}
+          {comments && comments.length > 1 ? 'click here expand the comments' : 'click here to view the post'}
         </Typography.Text>
         {isCommentExpanded && comments.map((value) => (
           <Row style={{ fontSize: 9 }}>
@@ -70,9 +70,13 @@ const Photo = (props) => {
   return (
     <Card
       hoverable
-      style={{ backgroundColor: '#F5F5F5', width: 512, marginBottom: 15 }}
+      style={{
+        backgroundColor: '#F5F5F5', width: 512, marginBottom: 15, marginLeft: 'auto', marginRight: 'auto',
+      }}
       cover={<img style={{ padding: 20, aspectRatio: 3 / 2 }} src={media} />}>
-      <Row gutter={16} style={{ marginTop: -40, paddingBottom: 10 }}>
+      <Row
+        gutter={16}
+        style={{ marginTop: -40, paddingBottom: 10 }}>
         <Col span={1}>
           <Icon type='heart' theme={(isLiked) ? 'filled' : null} onClick={handleLike} />
         </Col>
