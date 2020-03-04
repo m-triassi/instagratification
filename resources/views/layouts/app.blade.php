@@ -42,11 +42,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <div class="md-form mt-0">
+                            <input id='search-bar' class="form-control" type="text" placeholder="Search" aria-label="Search">
+                        </div>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <div style="padding-top: 7px" id="upload-modal" user="{{ $loggedInUser ?? Auth::user() }}"></div>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
