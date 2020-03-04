@@ -69,10 +69,12 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+        <!-- <div id="upload-modal" /> -->
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/') }}">Home</a>
+                        <div id="upload-modal" user="{{ $loggedInUser }}"></div>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
