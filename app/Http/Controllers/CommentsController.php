@@ -31,4 +31,15 @@ class CommentsController extends Controller
         $comments = Comment::where("post_id", $postID)->with('author')->get();
         return $comments;
     }
+
+    public function edit(Request $request,$commentID){
+        $newComment = $request->input("comment");
+
+        $comment = Comment::where("id", $commentID)->get();
+        $comment->comment = $newComment;
+        $result = $comment->save();
+
+        return response(['success' => $result]);
+
+    }
 }
