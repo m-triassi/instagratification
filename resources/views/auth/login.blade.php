@@ -17,21 +17,17 @@
   background-clip: cover;
     background-size: cover;
     display: table;
-
-
   }
-
-
   .login{
     position:absolute;
     transform: translate(-50%,-50%);
-    width: 340;
+    width: 400px;
     height: 530px;
-    background: #fff;
 
+    background:#fff;
     border-radius: 3px;
     padding: 0.6em;
-    top: 53%;
+    top: 52%;
     left:50%;
 
   }
@@ -74,7 +70,7 @@
 
   .btn {
     position:relative;
-    width:300px;
+    width:380px;
     height: 40px;
     font-size: 16px;
     background:		#A1479D;
@@ -89,9 +85,26 @@
     color: #000;
 
   }
+  .video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      transform: translateX(-50%) translateY(-50%);
+  	background-size: cover;
+  	transition: 1s opacity;
+  }
 
 
   </style>
+
+     <video loop  autoplay muted class="video" ><source src="https://i.imgur.com/Dw4NtfP.mp4" type="video/mp4" />
+     </video>
+  </div>
   <div class="login">
     <center><img src="https://i.imgur.com/nwHjAY5.png" class="logo"/>
    </center>
@@ -128,15 +141,11 @@
                                     {{ __('Login') }}<br>
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a  class="forgot" href="{{ route('password.request') }}">
-                                      <br>  {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+
 
                     </form>
                 </div>
-                
+
 
 
 @endsection
