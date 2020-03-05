@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
@@ -32,14 +32,19 @@ class CommentsController extends Controller
         return $comments;
     }
 
-    public function edit(Request $request,$commentID){
+    public function edit(Request $request,$commentID)
+    {
         $newComment = $request->input("comment");
-
-        $comment = Comment::where("id", $commentID)->get();
+        $comment = Comment::where("id", $commentID)->first();
         $comment->comment = $newComment;
-        $result = $comment->save();
 
-        return response(['success' => $result]);
+        if(Auth::user()->id == $comment->author_id)
+        {
+            $result = $comment->save();
 
+            return response(['success' => $result]);
+        }
+        else
+            return response(['success' => false]);
     }
 }
