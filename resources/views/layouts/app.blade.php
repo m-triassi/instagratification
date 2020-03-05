@@ -9,7 +9,7 @@
 
     <title>Instagratification</title>
     <title>{{ config('app.name', 'Instagratification') }}</title>
-    <link rel="icon" href="iconTest.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
