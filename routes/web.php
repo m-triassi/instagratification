@@ -27,4 +27,5 @@ Route::middleware(["auth"])->group(function () {
     Route::post('/comment/create', 'CommentsController@create')->name('comment.create');
     Route::post('/user/follow', 'UserController@follow')->name('user.follow');
     Route::post('/user/unfollow', 'UserController@unfollow')->name('user.unfollow');
+    Route::post('/comment/destroy', 'CommentsController@destroy')->name('comment.destroy');
 });
