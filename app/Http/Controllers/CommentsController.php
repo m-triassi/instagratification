@@ -24,6 +24,12 @@ class CommentsController extends Controller
 
         return response(['success' => $result]);
 
+
+    }
+    public function refresh($postID)
+    {
+        $comments = Comment::where("post_id", $postID)->with('author')->get();
+        return $comments;
     }
     public function destroy(comment $comment)
     {

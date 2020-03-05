@@ -4,36 +4,88 @@
 
 <style>
 
-.contentContainer {
-  position: relative;
-  z-index: 2;
-  margin: 0 auto;
-  max-width: 720px;
+html{
+  margin:0;
+  padding:0;
+  width: 100%;
+  height:100vh;
+}
+body{
+  margin:0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+background-clip: cover;
+  background-size: cover;
+  display: table;
+}
+.register{
+  position:absolute;
+  transform: translate(-50%,-50%);
+  width: 400px;
+  height: 670px;
+
+  background:#fff;
+  border-radius: 3px;
+  padding: 0.6em;
+  top: 63%;
+  left:50%;
+
+}
+.logo{
+
+  position:relative;
+  width: 300px;
+  height: 300px;
+
+
+}
+h2{
+  font-family: Source Sans Pro;
+  font-weight: lighter;
+  color: #fff;
+  font-size:50px;
   text-align: center;
 }
+input{
+  display: block ;
+  width: 320px;
+  height: 30px;
+  background-color: transparent;
+  background: rgba(0,0,0,0.05);
+  outline: none;
 
-.content__heading {
-  margin-bottom: 24px;
-  color: #272727;
-  font-size: 44px;
+  border: 0.5px solid rgba(0, 0, 0, 0.4);
+  font-family: Source Sans Pro;
+  font-weight:lighter;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+
+}
+label{
+  color:#000;
+  font-size: 15px;
 }
 
-.content__teaser {
-  margin-bottom: 24px;
-  color: #595959;
-  font-size: 22px;
+.btn {
+  position:relative;
+  width:380px;
+  height: 40px;
+  font-size: 16px;
+  background:		#A1479D;
+  font-weight: lighter;
+  font-size: 20px;
+  color: #fff;
+  border: 0px;
+  border-radius: 5px;
 }
+.forgot{
+  position:relative;
+  color: #000;
 
-.content__cta {
-  display: inline-block;
-
-  padding: 12px 48px;
-  color: #ff3c64;
-  font-size: 22px;
-  text-decoration: none;
-  border: solid 4px #ff3c64;
 }
-
 .video {
     position: fixed;
     top: 50%;
@@ -44,51 +96,25 @@
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
-	background-size: cover;
-	transition: 1s opacity;
-}
-
-.logo{
-  position: relative;
-  width: 300px;
-  height: 300px;
-}
-
-.btn {
-  position: relative;
-  width: 330px;
-  height: 40px;
-  font-size: 16px;
-  background:		#A1479D;
-  font-weight: lighter;
-  font-size: 20px;
-  color: #fff;
-  border: 0px;
-  border-radius: 5px;
+  background-size: cover;
+  transition: 1s opacity;
 }
 </style>
 
-<div class="col-md-4 box">
-   <video loop  autoplay preload="none" class="video" ><source src="http://dfcb.github.io/BigVideo.js/vids/dock.mp4" type="video/mp4" />
-   </video>
-</div>
 
-<div class="container">
+   <video loop  autoplay muted class="video" ><source src="https://i.imgur.com/BQ9K5r6.mp4" type="video/mp4" />
+   </video>
+
+
+<div class="register">
   <center><img src="https://i.imgur.com/nwHjAY5.png" class="logo"/>
  </center>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" >{{ __('Name') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
@@ -96,13 +122,10 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" >{{ __('Email') }}</label>
 
-                            <div class="col-md-6">
+
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -110,13 +133,10 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" >{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
+
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -124,28 +144,18 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-                            <div class="col-md-6">
+
+                            <label for="password-confirm" >{{ __('Confirm Password') }}</label>
+
+
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn">
+                                    {{ __('Register') }} <br>
                                 </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+
+          </form>
 </div>
 @endsection
