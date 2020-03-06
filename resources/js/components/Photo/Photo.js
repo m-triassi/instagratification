@@ -37,7 +37,7 @@ const Photo = (props) => {
             }}>
             click here to expand the comments
           </Typography.Text>
-          : <a href={`post/${id}`}><Typography.Text style={{fontSize: 11, color: '#EABFB9'}}>click here to view the post</Typography.Text></a>}
+          : <a href={`/post/${id}`}><Typography.Text style={{fontSize: 11, color: '#EABFB9'}}>click here to view the post</Typography.Text></a>}
         {isCommentExpanded && comments.map((value) => (
           <Row style={{fontSize: 9}}>
             <a href={`/user/${value.author.name}`}>

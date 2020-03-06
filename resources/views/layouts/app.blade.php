@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Instagratification</title>
-    <link rel="icon" href="icon.PNG" type="image/*">
+    <link rel="icon" href="/icon.PNG" type="image/*">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -33,7 +33,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img width="35px" height="35px" src="icon.PNG">
+                <img width="35px" height="35px" src="/icon.PNG">
                 Instagratification
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
