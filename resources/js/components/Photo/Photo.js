@@ -1,11 +1,11 @@
 import {
   Card, Icon, Row, Col, Input, Typography, message,
 } from 'antd'
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
-import { likePhoto, commentPhoto } from '../services/index'
+import {likePhoto, commentPhoto} from '../services/index'
 
-const { Meta } = Card
+const {Meta} = Card
 const Photo = (props) => {
   const {
     media, id, caption, author, comments, likes,
@@ -18,7 +18,7 @@ const Photo = (props) => {
   const [isCommentExpanded, setIsCommentExpanded] = useState(false)
 
   const description = (
-    <Row style={{ fontSize: 12 }}>
+    <Row style={{fontSize: 12}}>
       <Row>
         <a href={`/user/${author.name}`}>
           <Typography.Text strong>
@@ -31,15 +31,15 @@ const Photo = (props) => {
       <Row>
         {(comments && comments.length > 1)
           ? <Typography.Text
-            style={{ fontSize: 11, color: '#EABFB9' }}
+            style={{fontSize: 11, color: '#EABFB9'}}
             onClick={() => {
               setIsCommentExpanded(!isCommentExpanded)
             }}>
             click here to expand the comments
           </Typography.Text>
-          : <a href={`post/${id}`}><Typography.Text style={{ fontSize: 11, color: '#EABFB9' }}>click here to view the post</Typography.Text></a>}
+          : <a href={`post/${id}`}><Typography.Text style={{fontSize: 11, color: '#EABFB9'}}>click here to view the post</Typography.Text></a>}
         {isCommentExpanded && comments.map((value) => (
-          <Row style={{ fontSize: 9 }}>
+          <Row style={{fontSize: 9}}>
             <a href={`/user/${value.author.name}`}>
               <Typography.Text strong>
                 {value.author.name}
@@ -53,7 +53,7 @@ const Photo = (props) => {
     </Row>
   )
 
-  const handleComment = () => commentPhoto({ comment, author: props.user.id, postID: id })
+  const handleComment = () => commentPhoto({comment, author: props.user.id, postID: id})
     .then((response) => {
       if (response.data.success) {
         message.success('your comment has been added')
@@ -63,7 +63,7 @@ const Photo = (props) => {
     })
 
   const handleLike = () => {
-    likePhoto({ postID: id }).then((response) => {
+    likePhoto({postID: id}).then((response) => {
       if (response.data.success) {
         setLikedCount(likeCount + 1)
         setIsLiked(true)
@@ -77,16 +77,16 @@ const Photo = (props) => {
       style={{
         backgroundColor: '#F5F5F5', width: 512, marginBottom: 15, marginLeft: 'auto', marginRight: 'auto',
       }}
-      cover={<img style={{ padding: 20, aspectRatio: 3 / 2 }} src={media} />}>
+      cover={<img style={{padding: 20, aspectRatio: 3 / 2}} src={media} />}>
       <Row
         gutter={16}
-        style={{ marginTop: -40, paddingBottom: 10 }}>
+        style={{marginTop: -40, paddingBottom: 10}}>
         <Col span={1}>
           <Icon type='heart' theme={(isLiked) ? 'filled' : null} onClick={handleLike} />
         </Col>
         {likeCount > 0
           && <Col span={2}>
-            <Typography.Text style={{ fontSize: 10 }}>{likeCount}</Typography.Text>
+            <Typography.Text style={{fontSize: 10}}>{likeCount}</Typography.Text>
           </Col>}
         <Col span={1}>
           <Icon type='message' onClick={() => setIsCommentInputVisible(!isCommentInputVisible)} />
@@ -94,7 +94,7 @@ const Photo = (props) => {
       </Row>
       <Meta description={description} />
       {isCommentInputVisible
-        && <Row style={{ marginTop: 10 }}>
+        && <Row style={{marginTop: 10}}>
           <Input
             value={comment}
             placeholder='insert your comment'
