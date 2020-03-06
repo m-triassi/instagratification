@@ -31,10 +31,11 @@ class CommentsController extends Controller
         $comments = Comment::where("post_id", $postID)->with('author')->get();
         return $comments;
     }
-    public function destroy(comment $comment)
+    public function destroy(Request $request)
     {
-
-      if (auth()->user()->is($comment->user))
+      $commentID = $request->commentID;
+      $comment = Comment::with('author')->findOrFail($commentID);
+      if (auth()->user()->is($comment->author)
       {
         $comment->delete();
       }
