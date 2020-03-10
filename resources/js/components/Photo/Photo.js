@@ -3,7 +3,7 @@ import {
 } from 'antd'
 import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
-import {likePhoto, commentPhoto} from '../services/index'
+import {likePhoto, commentPhoto, getComments} from '../services/index'
 
 const {Meta} = Card
 const Photo = (props) => {
@@ -16,6 +16,7 @@ const Photo = (props) => {
   const [likeCount, setLikedCount] = useState(likes)
   const [comment, setComment] = useState('')
   const [isCommentExpanded, setIsCommentExpanded] = useState(false)
+  const [postComments, setPostComments] = useState(comments)
 
   const description = (
     <Row style={{fontSize: 12}}>
@@ -29,7 +30,7 @@ const Photo = (props) => {
         <Typography.Text>{caption}</Typography.Text>
       </Row>
       <Row>
-        {(comments && comments.length > 1)
+        {(postComments && postComments.length > 1)
           ? <Typography.Text
             style={{fontSize: 11, color: '#EABFB9'}}
             onClick={() => {
@@ -38,7 +39,7 @@ const Photo = (props) => {
             click here to expand the comments
           </Typography.Text>
           : <a href={`/post/${id}`}><Typography.Text style={{fontSize: 11, color: '#EABFB9'}}>click here to view the post</Typography.Text></a>}
-        {isCommentExpanded && comments.map((value) => (
+        {isCommentExpanded && postComments.map((value) => (
           <Row style={{fontSize: 9}}>
             <a href={`/user/${value.author.name}`}>
               <Typography.Text strong>
@@ -59,6 +60,11 @@ const Photo = (props) => {
         message.success('your comment has been added')
         setIsCommentInputVisible(false)
         setComment('')
+        getComments(id).then((commentResponse) => {
+          if (commentResponse.data.success) {
+            setPostComments(commentResponse.data)
+          }
+        })
       }
     })
 
