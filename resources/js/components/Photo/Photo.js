@@ -4,6 +4,7 @@ import {
 import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 import {likePhoto, commentPhoto} from '../services/index'
+import Comment from '../Comment/Comment'
 
 const {Meta} = Card
 const Photo = (props) => {
@@ -39,15 +40,7 @@ const Photo = (props) => {
           </Typography.Text>
           : <a href={`/post/${id}`}><Typography.Text style={{fontSize: 11, color: '#EABFB9'}}>click here to view the post</Typography.Text></a>}
         {isCommentExpanded && comments.map((value) => (
-          <Row style={{fontSize: 9}}>
-            <a href={`/user/${value.author.name}`}>
-              <Typography.Text strong>
-                {value.author.name}
-                {' '}
-              </Typography.Text>
-            </a>
-            <Typography.Text>{value.comment}</Typography.Text>
-          </Row>
+          <Comment author={value.author} comment={value.comment} />
         ))}
       </Row>
     </Row>
