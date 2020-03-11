@@ -1,0 +1,28 @@
+.captionRow {
+    font-size: 12px;
+}
+
+.photoCard {
+    background-color: #F5F5F5;
+    width: 512px;
+    margin-bottom: 15px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+
+.photoActionRow {
+    margin-top: -40px;
+    padding-bottom: 10px;
+}
+
+.likeCount {
+    font-size: 10px;
+    line-height: 2.5;
+    position: absolute;
+    bottom: 0;
+}
+
+.commentInputRow {
+    margin-top: 10px;
+}

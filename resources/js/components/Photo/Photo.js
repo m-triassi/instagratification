@@ -5,6 +5,7 @@ import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 import {likePhoto, commentPhoto} from '../services/index'
 import Comment from '../Comment/Comment'
+import './Photo.css'
 
 const {Meta} = Card
 const Photo = (props) => {
@@ -12,6 +13,7 @@ const Photo = (props) => {
     media, id, caption, author, comments, likes,
   } = props.post
   if (!id) return
+
   const [isCommentInputVisible, setIsCommentInputVisible] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
   const [likeCount, setLikedCount] = useState(likes)
@@ -19,7 +21,7 @@ const Photo = (props) => {
   const [isCommentExpanded, setIsCommentExpanded] = useState(false)
 
   const description = (
-    <Row style={{fontSize: 12}}>
+    <Row className='captionRow'>
       <Row>
         <a href={`/user/${author.name}`}>
           <Typography.Text strong>
@@ -46,6 +48,8 @@ const Photo = (props) => {
     </Row>
   )
 
+  const image = (<img style={{padding: 20, aspectRatio: 3 / 2}} src={media} />)
+
   const handleComment = () => commentPhoto({comment, author: props.user.id, postID: id})
     .then((response) => {
       if (response.data.success) {
@@ -67,19 +71,17 @@ const Photo = (props) => {
   return (
     <Card
       hoverable
-      style={{
-        backgroundColor: '#F5F5F5', width: 512, marginBottom: 15, marginLeft: 'auto', marginRight: 'auto',
-      }}
-      cover={<img style={{padding: 20, aspectRatio: 3 / 2}} src={media} />}>
+      className='photoCard'
+      cover={image}>
       <Row
         gutter={16}
-        style={{marginTop: -40, paddingBottom: 10}}>
+        className='photoActionRow'>
         <Col span={1}>
           <Icon type='heart' theme={(isLiked) ? 'filled' : null} onClick={handleLike} />
         </Col>
         {likeCount > 0
-          && <Col span={2}>
-            <Typography.Text style={{fontSize: 10}}>{likeCount}</Typography.Text>
+          && <Col span={2} style={{position: 'relative'}}>
+            <Typography.Text className='likeCount'>{likeCount}</Typography.Text>
           </Col>}
         <Col span={1}>
           <Icon type='message' onClick={() => setIsCommentInputVisible(!isCommentInputVisible)} />
@@ -87,7 +89,7 @@ const Photo = (props) => {
       </Row>
       <Meta description={description} />
       {isCommentInputVisible
-        && <Row style={{marginTop: 10}}>
+        && <Row className='commentInputRow'>
           <Input
             value={comment}
             placeholder='insert your comment'
