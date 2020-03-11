@@ -9,16 +9,37 @@ import './Photo.css'
 
 const {Meta} = Card
 const Photo = (props) => {
+  const {isSinglePost} = props
   const {
     media, id, caption, author, comments, likes,
   } = props.post
   if (!id) return
-
   const [isCommentInputVisible, setIsCommentInputVisible] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
   const [likeCount, setLikedCount] = useState(likes)
   const [comment, setComment] = useState('')
   const [isCommentExpanded, setIsCommentExpanded] = useState(false)
+
+  const getPostInfoText = () => {
+    if (comments && comments.length > 1) {
+      return (
+        <Typography.Text
+          style={{fontSize: 11, color: '#EABFB9'}}
+          onClick={() => {
+            setIsCommentExpanded(!isCommentExpanded)
+          }}>
+            click here to expand the comments
+        </Typography.Text>
+      )
+    } if (isSinglePost) {
+      return (
+        <Typography.Text style={{fontSize: 11, color: '#EABFB9'}}>this post contains no comments</Typography.Text>
+      )
+    }
+    return (
+      <a href={`/post/${id}`}><Typography.Text style={{fontSize: 11, color: '#EABFB9'}}>click here to view the post</Typography.Text></a>
+    )
+  }
 
   const description = (
     <Row className='captionRow'>
@@ -32,15 +53,7 @@ const Photo = (props) => {
         <Typography.Text>{caption}</Typography.Text>
       </Row>
       <Row>
-        {(comments && comments.length > 1)
-          ? <Typography.Text
-            style={{fontSize: 11, color: '#EABFB9'}}
-            onClick={() => {
-              setIsCommentExpanded(!isCommentExpanded)
-            }}>
-            click here to expand the comments
-          </Typography.Text>
-          : <a href={`/post/${id}`}><Typography.Text style={{fontSize: 11, color: '#EABFB9'}}>click here to view the post</Typography.Text></a>}
+        {getPostInfoText()}
         {isCommentExpanded && comments.map((value) => (
           <Comment author={value.author} comment={value.comment} />
         ))}
@@ -80,7 +93,7 @@ const Photo = (props) => {
           <Icon type='heart' theme={(isLiked) ? 'filled' : null} onClick={handleLike} />
         </Col>
         {likeCount > 0
-          && <Col span={2} style={{position: 'relative'}}>
+          && <Col span={2}>
             <Typography.Text className='likeCount'>{likeCount}</Typography.Text>
           </Col>}
         <Col span={1}>
@@ -107,7 +120,7 @@ const elements = Array.from(document.getElementsByClassName('photo'))
 if (elements) {
   const post = []
   elements.map((component) => {
-    post.push(<Photo post={JSON.parse(component.getAttribute('post'))} user={JSON.parse(component.getAttribute('user'))} />)
+    post.push(<Photo post={JSON.parse(component.getAttribute('post'))} user={JSON.parse(component.getAttribute('user'))} isSinglePost={JSON.parse(component.getAttribute('isSinglePost'))} />)
   })
   ReactDOM.render(post, document.getElementById('photo-container'))
 }
