@@ -70,11 +70,9 @@ const Photo = (props) => {
         message.success('your comment has been added')
         setIsCommentInputVisible(false)
         setComment('')
-        setTimeout(getComments(id).then((commentResponse) => {
-          if (commentResponse.data.success) {
-            setPostComments(commentResponse.data)
-          }
-        }))
+        getComments(id).then((commentResponse) => {
+          setPostComments(commentResponse.data)
+        })
       }
     })
 
