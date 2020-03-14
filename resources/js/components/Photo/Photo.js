@@ -3,9 +3,9 @@ import {
 } from 'antd'
 import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
-import {likePhoto, commentPhoto} from '../services/index'
 import Comment from '../Comment/Comment'
-import './Photo.css'
+import '../../../sass/Photo.scss'
+import {likePhoto, commentPhoto, getComments} from '../services/index'
 
 const {Meta} = Card
 const Photo = (props) => {
@@ -19,9 +19,10 @@ const Photo = (props) => {
   const [likeCount, setLikedCount] = useState(likes)
   const [comment, setComment] = useState('')
   const [isCommentExpanded, setIsCommentExpanded] = useState(false)
+  const [postComments, setPostComments] = useState(comments)
 
   const getPostInfoText = () => {
-    if (comments && comments.length > 1) {
+    if (postComments && postComments.length > 1) {
       return (
         <Typography.Text
           style={{fontSize: 11, color: '#EABFB9'}}
@@ -54,7 +55,7 @@ const Photo = (props) => {
       </Row>
       <Row>
         {getPostInfoText()}
-        {isCommentExpanded && comments.map((value) => (
+        {isCommentExpanded && postComments.map((value) => (
           <Comment author={value.author} comment={value.comment} />
         ))}
       </Row>
@@ -69,6 +70,11 @@ const Photo = (props) => {
         message.success('your comment has been added')
         setIsCommentInputVisible(false)
         setComment('')
+        getComments(id).then((commentResponse) => {
+          if (commentResponse.data.success) {
+            setPostComments(commentResponse.data)
+          }
+        })
       }
     })
 
