@@ -22,7 +22,7 @@ const Photo = (props) => {
   const [postComments, setPostComments] = useState(comments)
 
   const getPostInfoText = () => {
-    if (postComments && postComments.length > 1) {
+    if (postComments && postComments.length > 0) {
       return (
         <Typography.Text
           style={{fontSize: 11, color: '#EABFB9'}}
@@ -70,11 +70,11 @@ const Photo = (props) => {
         message.success('your comment has been added')
         setIsCommentInputVisible(false)
         setComment('')
-        getComments(id).then((commentResponse) => {
+        setTimeout(getComments(id).then((commentResponse) => {
           if (commentResponse.data.success) {
             setPostComments(commentResponse.data)
           }
-        })
+        }))
       }
     })
 
