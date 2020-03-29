@@ -20,9 +20,12 @@ class PostsController extends Controller
 
         return response(['success' => true]);
     }
-    public function show($postID){
+
+    public function show($postID)
+    {
         $post = Post::with('comments', 'comments.author', 'author')->findorFail($postID);
-        return View("posts.view")->with(compact(["post"]));
+
+        return View('posts.view')->with(compact(['post']));
     }
 
     public function create(Request $request)
@@ -32,11 +35,10 @@ class PostsController extends Controller
         $post->id = Uuid::uuid4();
         $post->caption = $request->caption;
         $image = base64_decode(substr($request->media, strpos($request->media, ',') + 1));
-        Storage::put('posts/' . $post->id, $image);
-        $post->media = '/storage/posts/' . $post->id;
+        Storage::put('posts/'.$post->id, $image);
+        $post->media = '/storage/posts/'.$post->id;
         $post->author()->associate(Auth::user());
         $post->save();
-
 
         return response(['success' => true]);
     }

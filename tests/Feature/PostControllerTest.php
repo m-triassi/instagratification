@@ -3,11 +3,11 @@
 namespace Tests\Feature;
 
 use App\Models\Comment;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
-use App\Models\User;
-use App\Models\Post;
 
 class PostControllerTest extends TestCase
 {
@@ -25,16 +25,16 @@ class PostControllerTest extends TestCase
             '/post/create',
             [
                 'caption' => $post->caption,
-                'media' => base64_encode(file_get_contents($post->media))
+                'media' => base64_encode(file_get_contents($post->media)),
             ]
         );
         $savedPost = Post::where('author_id', $user->id)->first();
         $this->assertNotNull($savedPost);
         $this->assertEquals($user->id, $savedPost->author_id);
-        $this->assertFileExists(storage_path('app/public/posts/' . $savedPost->id));
+        $this->assertFileExists(storage_path('app/public/posts/'.$savedPost->id));
 
         // Clean up media
-        Storage::delete('posts/' . $savedPost->id);
+        Storage::delete('posts/'.$savedPost->id);
     }
 
     /** @test */
@@ -69,14 +69,13 @@ class PostControllerTest extends TestCase
             [
                 'comment' => $comment->comment,
                 'author' => $commenter->id,
-                'postID' => $post->id
+                'postID' => $post->id,
             ]
         );
 
-        $response = $this->get('comments/' . $post->id);
+        $response = $this->get('comments/'.$post->id);
         $comments = json_decode($response->getContent());
         $this->assertCount(1, $comments);
         $this->assertEquals($commenter->id, $comments[0]->author_id);
-
     }
 }
