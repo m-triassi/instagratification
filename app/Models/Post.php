@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 class Post extends BaseModel
 {
     /**
@@ -25,5 +24,4 @@ class Post extends BaseModel
     {
         return $this->belongsTo(User::class);
     }
-
 }

@@ -36,7 +36,5 @@ class UserControllerTest extends TestCase
         $leader = $leader->find($leader->id);
 
         $this->assertCount(0, $leader->followers);
-
-
     }
 }

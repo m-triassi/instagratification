@@ -21,13 +21,11 @@ class CreatePostsTable extends Migration
             $table->integer('likes')->default(0);
             $table->timestamps();
 
-            $table->foreign("author_id")
-                ->references("id")
+            $table->foreign('author_id')
+                ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
-
         });
     }
 

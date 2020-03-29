@@ -6,7 +6,6 @@ use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-
 class CommentsController extends Controller
 {
     public function create(Request $request)
@@ -23,12 +22,12 @@ class CommentsController extends Controller
         $result = $comment->save();
 
         return response(['success' => $result]);
-
-
     }
+
     public function refresh($postID)
     {
-        $comments = Comment::where("post_id", $postID)->orderBy('created_at', 'asc')->with('author')->get();
+        $comments = Comment::where('post_id', $postID)->orderBy('created_at', 'asc')->with('author')->get();
+
         return $comments;
     }
 }
