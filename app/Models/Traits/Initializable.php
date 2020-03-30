@@ -5,7 +5,7 @@ namespace App\Models\Traits;
 trait Initializable
 {
     /**
-     * Override constructor to fire initializing event
+     * Override constructor to fire initializing event.
      * @param array $attributes
      */
     public function __construct(array $attributes = [])
@@ -19,7 +19,7 @@ trait Initializable
     }
 
     /**
-     * Fire a callback whenever an instance is constructed
+     * Fire a callback whenever an instance is constructed.
      * @param  callable $callback
      * @return void
      */

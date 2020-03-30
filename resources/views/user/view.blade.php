@@ -2,6 +2,7 @@
 
 @section('content')
     <div>
+      @if(!$user->is($loggedInUser))
         @if($userCanFollow)
             <form method="POST" action="{{ route('user.follow') }}">
                 @csrf
@@ -15,10 +16,11 @@
                 <button class='btn btn-primary' type="submit">Unfollow</button>
             </form>
             @endif
+        @endif    
     </div>
 
     <div id='photo-container' class='container'>
-        @foreach($posts as $i => $post)
+        @foreach($user->posts as $i => $post)
             <div class="photo" id="post_{{ $i }}" post="{{ $post }}" user="{{ $loggedInUser ?? Auth::user() }}" />
         @endforeach
     </div>

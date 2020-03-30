@@ -21,7 +21,6 @@ class CreateCommentsTable extends Migration
             $table->integer('likes')->default(0);
             $table->timestamps();
 
-
             $table->foreign('author_id')
                 ->references('id')
                 ->on('users')
@@ -31,8 +30,6 @@ class CreateCommentsTable extends Migration
                 ->references('id')
                 ->on('posts')
                 ->onDelete('cascade');
-
-
         });
     }
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
@@ -23,12 +22,12 @@ class CommentsController extends Controller
         $result = $comment->save();
 
         return response(['success' => $result]);
-
-
     }
+
     public function refresh($postID)
     {
-        $comments = Comment::where("post_id", $postID)->with('author')->get();
+        $comments = Comment::where('post_id', $postID)->orderBy('created_at', 'asc')->with('author')->get();
+
         return $comments;
     }
 

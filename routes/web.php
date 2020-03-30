@@ -12,9 +12,7 @@
 */
 Auth::routes();
 
-
-Route::middleware(["auth"])->group(function () {
-
+Route::middleware(['auth'])->group(function () {
     Route::get('/', 'PagesController@index')->name('index');
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/post/{postID}', 'PostsController@show')->name('post.show');

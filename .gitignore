@@ -17,3 +17,4 @@ yarn-error.log
 package-lock.json
 .vscode
 /public/js
+.php_cs.cache
