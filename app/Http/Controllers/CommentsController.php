@@ -30,4 +30,21 @@ class CommentsController extends Controller
 
         return $comments;
     }
+
+    public function edit(Request $request)
+    {
+        $commentID = $request->comment_id;
+        $newComment = $request->comment;
+        $comment = Comment::find($commentID);
+
+        if(Auth::user()->id == $comment->author_id)
+        {
+            $comment->comment = $newComment;
+            $result = $comment->save();
+
+            return response(['success' => $result]);
+        }
+        else
+            return response(['success' => false]);
+    }
 }

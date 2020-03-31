@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/search/{user}', 'UserController@searchUser')->name('user.searchUser');
     Route::get('/comments/{postID}', 'CommentsController@refresh')->name('comments.refresh');
 
+    Route::post('/comment/edit', 'CommentsController@edit')->name('comment.edit');
     Route::post('/post/like', 'PostsController@like')->name('post.like');
     Route::post('/post/create', 'PostsController@create')->name('post.create');
     Route::post('/comment/create', 'CommentsController@create')->name('comment.create');
