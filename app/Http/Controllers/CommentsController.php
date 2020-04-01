@@ -37,9 +37,14 @@ class CommentsController extends Controller
       if (auth()->user()->is($comment->author))
       {
         $comment->delete();
-      }
 
-      return back();
+        return response(['success' => $comment]);
+      }
+      else
+      {
+        return response(['success' => false]);
+
+      }
     }
 
     public function edit(Request $request)
