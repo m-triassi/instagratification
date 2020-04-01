@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 class Post extends BaseModel
 {
     /**
@@ -18,12 +17,11 @@ class Post extends BaseModel
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->orderBy('created_at');
     }
 
     public function author()
     {
         return $this->belongsTo(User::class);
     }
-
 }

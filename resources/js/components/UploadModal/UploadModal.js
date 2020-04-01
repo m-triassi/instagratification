@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 import {
   Button, Form, Icon, Modal, message, Row, Input, Upload,
 } from 'antd'
 import PropTypes from 'prop-types'
-import { postPicture } from '../services/index'
+import {postPicture} from '../services/index'
 
 const UploadModal = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -14,7 +14,7 @@ const UploadModal = (props) => {
     if (!upload || !caption) {
       message.error('post failed')
     }
-    postPicture({ caption, media: upload, author: props.authorId })
+    postPicture({caption, media: upload, author: props.authorId})
       .then((response) => {
         if (response.data.success) {
           message.success('post uploaded')
@@ -23,7 +23,7 @@ const UploadModal = (props) => {
       })
   }
 
-  const dummyRequest = ({ onSuccess }) => {
+  const dummyRequest = ({onSuccess}) => {
     setTimeout(() => {
       onSuccess('ok')
     }, 0)
