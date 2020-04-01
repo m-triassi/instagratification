@@ -30,6 +30,22 @@ class CommentsController extends Controller
 
         return $comments;
     }
+    public function destroy(Request $request)
+    {
+      $commentID = $request->commentID;
+      $comment = Comment::with('author')->findOrFail($commentID);
+      if (auth()->user()->is($comment->author))
+      {
+        $comment->delete();
+
+        return response(['success' => $comment]);
+      }
+      else
+      {
+        return response(['success' => false]);
+
+      }
+    }
 
     public function edit(Request $request)
     {
