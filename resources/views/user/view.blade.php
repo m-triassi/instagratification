@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
+    <div class="flex-center" style="padding-bottom: 50px;">
+      <h3 style="padding-right: 50px;">{{ ucfirst($user->name) }}'s Profile</h3>
       @if(!$user->is($loggedInUser))
         @if($userCanFollow)
             <form method="POST" action="{{ route('user.follow') }}">
@@ -16,7 +17,7 @@
                 <button class='btn btn-primary' type="submit">Unfollow</button>
             </form>
             @endif
-        @endif    
+        @endif
     </div>
 
     <div id='photo-container' class='container'>

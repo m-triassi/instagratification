@@ -1,4 +1,8 @@
 ## Instagratification - SOEN 341
+<p align="center">
+<a href="https://travis-ci.com/github/m-triassi/instagratification"><img src="https://travis-ci.com/m-triassi/instagratification.svg?token=TxHfMqz32Qx9yPCrz6QZ" alt="Build Status"></a>
+<a href="https://github.com/m-triassi/instagratification"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
 This project is about creating an Instagram like website. There will be three core features as follows: Post a picture, Follow a user and Leave comments to a posted picture. Additionally, one extra core feature will be implemented which will be decided by our team and approved by our client which is our teaching assistant.
 
@@ -33,3 +37,32 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 ## License
 
 Instagrafitication is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Demo
+
+The following is a number of gifs and images demoing the functionality of this project. Please excuse any artifacts in the gifs that is caused by the capture software used.
+
+You may also notice that many users have the same image posted on their profile, this is a symptom of how quickly we generated our users and their posts. The Unsplash API was unable to supply a new link to an image fast enough, likely caused by caching the response from an API call.
+
+#### Login and like
+
+<img src="storage/demo/login-feed-like.gif">
+
+#### Logout and Register a new Account
+<img src="storage/demo/logout-register.gif">
+
+#### Upload an image
+
+<img src="storage/demo/upload.gif">
+
+#### Follow another User
+
+<img src="storage/demo/follow-user.gif">
+
+#### Comment on a Photo
+
+<img src="storage/demo/comment.gif">
+
+#### Search for a User
+
+<img src="storage/demo/search.gif">
