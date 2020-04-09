@@ -46,7 +46,7 @@ const Photo = (props) => {
     <Row className='captionRow'>
       <Row>
         <a href={`/user/${author.name}`}>
-          <Typography.Text strong>
+          <Typography.Text data-cy='postAuthor' strong>
             {author.name}
             {' '}
           </Typography.Text>
