@@ -33,3 +33,32 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 ## License
 
 Instagrafitication is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Demo
+
+The following is a number of gifs and images demoing the functionality of this project. Please excuse any artifacts in the gifs that is caused by the capture software used.
+
+You may also notice that many users have the same image posted on their profile, this is a symptom of how quickly we generated our users and their posts. The Unsplash API was unable to supply a new link to an image fast enough, likely caused by caching the response from an API call.
+
+#### Login and like
+
+<img src="storage/demo/login-feed-like.gif">
+
+#### Logout and Register a new Account
+<img src="storage/demo/logout-register.gif">
+
+#### Upload an image
+
+<img src="storage/demo/upload.gif">
+
+#### Follow another User
+
+<img src="storage/demo/follow-user.gif">
+
+#### Comment on a Photo
+
+<img src="storage/demo/comment.gif">
+
+#### Search for a User
+
+<img src="storage/demo/search.gif">
