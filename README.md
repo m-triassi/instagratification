@@ -1,4 +1,8 @@
 ## Instagratification - SOEN 341
+<p align="center">
+<a href="https://travis-ci.com/github/m-triassi/instagratification"><img src="https://travis-ci.com/m-triassi/instagratification.svg?token=TxHfMqz32Qx9yPCrz6QZ" alt="Build Status"></a>
+<a href="https://github.com/m-triassi/instagratification"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
 This project is about creating an Instagram like website. There will be three core features as follows: Post a picture, Follow a user and Leave comments to a posted picture. Additionally, one extra core feature will be implemented which will be decided by our team and approved by our client which is our teaching assistant.
 
